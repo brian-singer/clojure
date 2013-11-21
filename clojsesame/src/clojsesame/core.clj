@@ -10,7 +10,7 @@
 
 (defn testQuery []
   (with-open [c (.getConnection repository)]
-  	(-> c (.prepareTupleQuery QueryLanguage/SPARQL "SELECT ?x ?y WHERE { ?x ?p ?y } ") .evaluate result2vec))) 
+  	(-> c (.prepareTupleQuery QueryLanguage/SPARQL "SELECT ?x ?p ?y WHERE { ?x ?p ?y } ") .evaluate result2vec))) 
 
 (defn parseCsvLine [x] 
 	(re-seq #"[^,]+" x))		
