@@ -10,6 +10,9 @@
 (def valueFactory  (.getValueFactory repository ))
 (def _ (-> repository .initialize))
 
+(defprotocol SesameRepository 
+	(store [x]))
+
 (defn createLiteral [l]
 	(.createLiteral valueFactory l))
 

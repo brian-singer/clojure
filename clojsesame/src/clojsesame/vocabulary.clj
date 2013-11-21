@@ -5,10 +5,9 @@
 
 ;(RDF/TYPE)
 
-(def person (createURI (str basicNamespace "/person")))
+(def person (createURI (str basicNamespace "/person/")))
 (def fullName (createURI (str basicNamespace "/fullname")))
-(def profession (createURI (str basicNamespace "/fullname")))
+(def profession (createURI (str basicNamespace "/profession")))
 
-(defprotocol SesameRepository 
-	(store [x]))
-
+(defmulti convert 
+	(fn[x type] type))

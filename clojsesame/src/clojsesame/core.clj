@@ -15,11 +15,11 @@
 (defn parseCsvLine [x] 
 	(re-seq #"[^,]+" x))		
 
-(defn readCsvFile [filename]
+(defn readCsvFile [{:keys [filename type]}]
 	(with-open [rdr (reader filename)]
 	(doall
 		(for [line (line-seq rdr)]
-			(-> line parseCsvLine convert)))))
+			(-> line parseCsvLine (convert type))))))
 
 (defn storeEm [x]
 	(dorun (map store x)))
@@ -27,7 +27,7 @@
 (defn -main
   [& args]
   	(storeEm 
-  		(readCsvFile "dumps/notaries-dump.csv" ))
+  		(readCsvFile notaryInfo ))
   	(let [results (testQuery)]
   		(println results)))
   		
