@@ -3,7 +3,8 @@
 		[clojure.java.io :refer :all]
 		[clojsesame.vocabulary :refer :all]
 		[clojsesame.notary :refer :all]
-		[clojsesame.sesame :refer :all])
+		[clojsesame.sesame :refer :all]
+		[clojsesame.lawyer :refer :all])
 	(:gen-class))
 
 (import 'org.openrdf.query.QueryLanguage)
@@ -27,7 +28,7 @@
 (defn -main
   [& args]
   	(storeEm 
-  		(readCsvFile notaryInfo ))
+  		(readCsvFile lawyerInfo ))
   	(let [results (testQuery)]
   		(println results)))
   		

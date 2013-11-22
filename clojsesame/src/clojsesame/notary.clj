@@ -7,16 +7,16 @@
 
 (def notaryNamespace (str basicNamespace "/notary/"))
 
-(defn notaryUuidURI [x] 
+(defn- notaryUuidURI [x] 
 	(createURI notaryNamespace (:name x)))
 
-(defn notaryName [x] 
+(defn- notaryName [x] 
 	(vector (notaryUuidURI x) fullName (createLiteral (:name x))))
 
-(defn notaryProfession [x] 
+(defn- notaryProfession [x] 
 	(vector (notaryUuidURI x) profession (createLiteral (:form x))))
 
-(defn notaryCity [x] 
+(defn- notaryCity [x] 
 	(vector (notaryUuidURI x) city (createLiteral (:city x))))
 
 (defrecord Notary [name form street city zip]
