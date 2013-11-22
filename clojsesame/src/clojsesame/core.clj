@@ -6,7 +6,9 @@
 		[clojsesame.integration.notary :refer :all]
 		[clojsesame.integration.lawyer :refer :all]
 		[clojsesame.integration.executor :refer :all]
-		[clojsesame.integration.europolitics :refer :all])
+		[clojsesame.integration.europolitics :refer :all]
+		[clojsesame.integration.lawyer_assoc :refer :all]
+		[clojsesame.integration.lawyer_partnerships :refer :all])
 	(:gen-class))
 
 (import 'org.openrdf.query.QueryLanguage)
@@ -30,7 +32,7 @@
 (defn -main
   [& args]
   	(storeEm 
-  		(readCsvFile europoliticsInfo ))
+  		(readCsvFile lawyerPartnerInfo ))
   	(let [results (testQuery)]
   		(println results)))
   		

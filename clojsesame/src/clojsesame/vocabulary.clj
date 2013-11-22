@@ -14,6 +14,7 @@
 (def occupation (createURI (str basicNamespace "/occupation")))
 (def order (createURI (str basicNamespace "/order")))
 (def year (createURI (str basicNamespace "/year")))
+(def theType (createURI (str basicNamespace "/theType")))
 ;(def zip (createURI (str basicNamespace "/zip")))
 
 (defmulti convert 
