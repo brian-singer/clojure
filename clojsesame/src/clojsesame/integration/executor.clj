@@ -1,4 +1,4 @@
-(ns clojsesame.executor
+(ns clojsesame.integration.executor
 	(:require 
 		[clojsesame.vocabulary :refer :all]
 		[clojsesame.sesame :refer :all]))

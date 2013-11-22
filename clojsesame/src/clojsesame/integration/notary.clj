@@ -1,4 +1,4 @@
-(ns clojsesame.notary
+(ns clojsesame.integration.notary
 	(:require 
 		[clojsesame.vocabulary :refer :all]
 		[clojsesame.sesame :refer :all]))

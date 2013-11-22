@@ -2,11 +2,11 @@
 	(:require 
 		[clojure.java.io :refer :all]
 		[clojsesame.vocabulary :refer :all]
-		[clojsesame.notary :refer :all]
 		[clojsesame.sesame :refer :all]
-		[clojsesame.lawyer :refer :all]
-		[clojsesame.executor :refer :all]
-		[clojsesame.europolitics :refer :all])
+		[clojsesame.integration.notary :refer :all]
+		[clojsesame.integration.lawyer :refer :all]
+		[clojsesame.integration.executor :refer :all]
+		[clojsesame.integration.europolitics :refer :all])
 	(:gen-class))
 
 (import 'org.openrdf.query.QueryLanguage)

@@ -1,4 +1,4 @@
-(ns clojsesame.europolitics
+(ns clojsesame.integration.europolitics
 	(:require 
 		[clojsesame.vocabulary :refer :all]
 		[clojsesame.sesame :refer :all]))
