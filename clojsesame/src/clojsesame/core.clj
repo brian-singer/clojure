@@ -10,7 +10,8 @@
 		[clojsesame.integration.lawyer_assoc :refer :all]
 		[clojsesame.integration.lawyer_partnerships :refer :all]
 		[clojsesame.integration.notary_empl :refer :all]
-		[clojsesame.integration.procurements :refer :all])
+		[clojsesame.integration.procurements :refer :all]
+		[clojsesame.integration.opencontract :refer :all])
 	(:gen-class))
 
 (import 'org.openrdf.query.QueryLanguage)
@@ -34,7 +35,7 @@
 (defn -main
   [& args]
   	(storeEm 
-  		(readCsvFile procurementsInfo ))
+  		(readCsvFile ocInfo ))
   	(let [results (testQuery)]
   		(println results)))
   		

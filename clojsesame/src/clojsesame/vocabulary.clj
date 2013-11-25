@@ -16,6 +16,9 @@
 (def year (createURI (str basicNamespace "/year")))
 (def theType (createURI (str basicNamespace "/theType")))
 ;(def zip (createURI (str basicNamespace "/zip")))
+(def noteURI (createURI (str basicNamespace "/note")))
+(def sourceUrlURI (createURI (str basicNamespace "/sourceurl")))
+(def supplierIcoURI (createURI (str basicNamespace "/supplierico")))
 
 (defmulti convert 
 	(fn[x type] type))

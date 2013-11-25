@@ -11,17 +11,14 @@
 (def customerCityURI (createURI (str basicNamespace "/customercity")))
 (def supplierAddressURI (createURI (str basicNamespace "/supplieraddress")))
 (def supplierCityURI (createURI (str basicNamespace "/suppliercity")))
-(def noteURI (createURI (str basicNamespace "/note")))
 (def yearURI (createURI (str basicNamespace "/year")))
 (def procurementSubjectURI (createURI (str basicNamespace "/procurementsubject")))
 (def priceURI (createURI (str basicNamespace "/price")))
 (def currencyURI (createURI (str basicNamespace "/currency")))
 (def VAT_includedURI (createURI (str basicNamespace "/vatincluded")))
-(def sourceUrlURI (createURI (str basicNamespace "/sourceurl")))
 (def customerFullnameURI (createURI (str basicNamespace "/customerfullname")))
 (def customerIcoURI (createURI (str basicNamespace "/customerico")))
 (def supplierFullnameURI (createURI (str basicNamespace "/supplierfullname")))
-(def supplierIcoURI (createURI (str basicNamespace "/supplierico")))
 (def supplierRegionURI (createURI (str basicNamespace "/supplierregion")))
 
 (defn- procurementsUuidURI [{ n :name}] 
