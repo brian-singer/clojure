@@ -20,6 +20,7 @@
 (def sourceUrlURI (createURI (str basicNamespace "/sourceurl")))
 (def supplierIcoURI (createURI (str basicNamespace "/supplierico")))
 (def currencyURI (createURI (str basicNamespace "/currency")))
+(def receiverURI (createURI (str basicNamespace "/receiver")))
 
 (defmulti convert 
 	(fn[x type] type))

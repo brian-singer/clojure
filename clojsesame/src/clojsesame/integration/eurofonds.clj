@@ -7,7 +7,6 @@
 
 (def eurofondsNamespace (str basicNamespace "/eurofonds/"))
 
-(def receiverURI (createURI (str basicNamespace "/receiver")))
 (def receiverIcoURI (createURI (str basicNamespace "/receiverico")))
 (def projectNameURI (createURI (str basicNamespace "/projectname")))
 (def itmsCodeURI (createURI (str basicNamespace "/itmscode")))
@@ -22,8 +21,6 @@
 (def beginningURI (createURI (str basicNamespace "/beginning")))
 (def finishURI (createURI (str basicNamespace "/finish")))
 (def updatedAtURI (createURI (str basicNamespace "/updatedAt")))
-
-
 
 
 (defn- eurofondsUuidURI [{ n :name}] 

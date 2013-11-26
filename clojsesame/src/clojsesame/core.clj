@@ -12,7 +12,8 @@
 		[clojsesame.integration.notary_empl :refer :all]
 		[clojsesame.integration.procurements :refer :all]
 		[clojsesame.integration.opencontract :refer :all]
-		[clojsesame.integration.eurofonds :refer :all])
+		[clojsesame.integration.eurofonds :refer :all]
+		[clojsesame.integration.eurofonddirect :refer :all])
 	(:gen-class))
 
 (import 'org.openrdf.query.QueryLanguage)
@@ -36,7 +37,7 @@
 (defn -main
   [& args]
   	(storeEm 
-  		(readCsvFile eurofondsInfo ))
+  		(readCsvFile eurofondDirectInfo ))
   	(let [results (testQuery)]
   		(println results)))
   		
