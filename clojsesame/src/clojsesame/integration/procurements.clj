@@ -14,7 +14,6 @@
 (def yearURI (createURI (str basicNamespace "/year")))
 (def procurementSubjectURI (createURI (str basicNamespace "/procurementsubject")))
 (def priceURI (createURI (str basicNamespace "/price")))
-(def currencyURI (createURI (str basicNamespace "/currency")))
 (def VAT_includedURI (createURI (str basicNamespace "/vatincluded")))
 (def customerFullnameURI (createURI (str basicNamespace "/customerfullname")))
 (def customerIcoURI (createURI (str basicNamespace "/customerico")))

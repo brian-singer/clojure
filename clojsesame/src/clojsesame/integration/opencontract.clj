@@ -19,6 +19,9 @@
 (def expiresOnUri (createURI (str basicNamespace "/expireson")))
 (def pageCountURI (createURI (str basicNamespace "/pagecount")))
 
+
+
+
 (defn- ocUuidURI [{ n :name}] 
 	(createURI ocNamespace n))
 
@@ -28,28 +31,28 @@
 (defn- cDepartment [{ n :department :as x}] 
 	(vector (ocUuidURI x) departmentUri (createLiteral n)))
 
-(defn- customer [{ n :customer :as x}] 
+(defn- ocCustomer [{ n :customer :as x}] 
 	(vector (ocUuidURI x) customerURI (createLiteral n)))
 
-(defn- supplier [{ n :supplier :as x}] 
+(defn- ocSupplier [{ n :supplier :as x}] 
 	(vector (ocUuidURI x) supplierURI (createLiteral n)))
 
 (defn- sIco [{ n :supplierIco :as x}] 
 	(vector (ocUuidURI x) supplierIcoURI (createLiteral n)))
 
-(defn- contractedAmount [{ n :contractedAmount :as x}] 
+(defn- amount [{ n :contractedAmount :as x}] 
 	(vector (ocUuidURI x) contractedAmountURI (createLiteral n)))
 
-(defn- totalAmount [{ n :totalAmount :as x}] 
+(defn- ocTotalAmount [{ n :totalAmount :as x}] 
 	(vector (ocUuidURI x) totalAmountURI (createLiteral n)))
 
-(defn- publishedOn [{ n :publishedOn :as x}] 
+(defn- ocPublishedOn [{ n :publishedOn :as x}] 
 	(vector (ocUuidURI x) publishedOnURI (createLiteral n)))
 
-(defn- effectiveFrom [{ n :effectiveFrom :as x}] 
+(defn- ocEffectiveFrom [{ n :effectiveFrom :as x}] 
 	(vector (ocUuidURI x) effectiveFromUri (createLiteral n)))
 
-(defn- expiresOn [{ n :expiresOn :as x}] 
+(defn- ocExpiresOn [{ n :expiresOn :as x}] 
 	(vector (ocUuidURI x) expiresOnUri (createLiteral n)))
 
 (defn- procSourceUrl [{ n :sourceUrl :as x}] 
@@ -58,7 +61,7 @@
 (defn- ocNote [{ n :note :as x}] 
 	(vector (ocUuidURI x) noteURI (createLiteral n)))
 
-(defn- pageCount [{ n :pageCount :as x}] 
+(defn- pages [{ n :pageCount :as x}] 
 	(vector (ocUuidURI x) pageCountURI (createLiteral n)))
 
 
@@ -66,8 +69,7 @@
 	SesameRepository
 	 (store [x] 
 	 (println x)    	
-    	(doseq [[subj predic obj] ((cName1 cDepartment customer supplier sIco contractedAmount totalAmount publishedOn effectiveFrom
-    	 expiresOn procSourceUrl ocNote pageCount) x)]
+    	(doseq [[subj predic obj] ((juxt cName1 cDepartment ocCustomer ocSupplier sIco amount ocTotalAmount ocPublishedOn ocEffectiveFrom ocExpiresOn procSourceUrl ocNote pages) x)]
     		(insertTriple subj predic obj))))
 
 (defmethod convert :opencontract [x type]

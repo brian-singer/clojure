@@ -19,6 +19,7 @@
 (def noteURI (createURI (str basicNamespace "/note")))
 (def sourceUrlURI (createURI (str basicNamespace "/sourceurl")))
 (def supplierIcoURI (createURI (str basicNamespace "/supplierico")))
+(def currencyURI (createURI (str basicNamespace "/currency")))
 
 (defmulti convert 
 	(fn[x type] type))
