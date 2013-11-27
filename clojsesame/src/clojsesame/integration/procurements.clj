@@ -25,17 +25,17 @@
  :customerCity customerCityURI
  :supplierAddress supplierAddressURI
  :supplierCity supplierCityURI
- :note noteURI
+ :note note
  :year year
  :procurementSubject procurementSubjectURI
  :price  priceURI
- :currency currencyURI
+ :currency currency
  :VAT_included VAT_includedURI 
- :sourceUrl sourceUrlURI 
+ :sourceUrl sourceUrl
  :customerFullname customerFullnameURI
  :customerIco customerIcoURI 
  :supplierFullname supplierFullnameURI 
- :supplierIco supplierIcoURI 
+ :supplierIco supplierIco
  :supplierRegion supplierRegionURI})
 
 (defrecord Procurement [customerAddress customerCity supplierAddress supplierCity note year

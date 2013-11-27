@@ -5,14 +5,14 @@
 
 (def notaryEmployeeInfo {:filename "dumps/notary_employees-dump.csv" :type :notaryEmployee})
 
-(defn- neUuidURI [{ n :name}] 
+(defn- notaryEmployeeURI [{ n :name}] 
 	(createURI (str basicNamespace "/notaryEmpl/") n))
 
-(def notaryMap {:name fullName :profession profession})
+(def notaryEmployeeMap {:name fullname :profession profession})
 
 (defrecord NotaryEmployee [name profession]
 	SesameRepository
-	 (store [x] (storeRecord neUuidURI notaryMap x)))
+	 (store [x] (storeRecord notaryEmployeeURI notaryEmployeeMap x)))
 
 (defmethod convert :notaryEmployee [x type]
 (let [[_ firstName lastName] x]

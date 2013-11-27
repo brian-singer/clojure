@@ -18,7 +18,7 @@
 
 (defrecord Europolitics [name profession party occupation order year]
 	SesameRepository
-	 (store [x] (storeRecord europoliticsURI eurofondsMap x)))
+	 (store [x] (storeRecord europoliticsURI europoliticsMap x)))
 
 (defmethod convert :europolitics [x type]
 (let [[_ _ firstName lastName _ party _ occupation order _ year] x]

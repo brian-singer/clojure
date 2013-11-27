@@ -15,31 +15,30 @@
 (def usedTotalURI (createURI (str basicNamespace "/usedTotal")))
 (def euUsedURI (createURI (str basicNamespace "/euUsed")))
 (def govUsedURI (createURI (str basicNamespace "/govUsed")))
-(def additionalFinancingURI (createURI (str basicNamespace "/additionalFinancing")))
+(def additionalFinancingURI (createURI (str basicNamespace "/additionalfinancing")))
 (def beginningURI (createURI (str basicNamespace "/beginning")))
 (def finishURI (createURI (str basicNamespace "/finish")))
 (def updatedAtURI (createURI (str basicNamespace "/updatedat")))
-(def totalAmountURI (createURI (str basicNamespace "/totalamout")))
 
 (defn- eurofondsUuidURI [{ n :name}] 
 	(createURI (str basicNamespace "/eurofonds/") n))
 
 (def eurofondsMap { 
-	:receiver receiverURI
+	:receiver receiver
 	:receiverIco receiverIcoURI
 	:projectName projectNameURI
 	:itmsCode itmsCodeURI
 	:operationProgram operationProgramURI
 	:controlEntity controlEntityURI
-	:note noteURI
-	:totalAmout totalAmountURI
+	:note note
+	:totalAmout totalAmount
 	:euPart euPartURI
 	:govPart govPartURI
 	:usedTotal usedTotalURI
 	:euUsed euUsedURI
 	:govUsed govUsedURI
 	:additionalFinancing additionalFinancingURI
-	:currency currencyURI
+	:currency currency
 	:beginning beginningURI
 	:finish finishURI
 	:updatedAt updatedAtURI

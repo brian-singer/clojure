@@ -3,14 +3,13 @@
 		[clojsesame.vocabulary :refer :all]
 		[clojsesame.sesame :refer :all]))
 
-(def ocInfo {:filename "dumps/otvorenezmluvy-dump.csv" :type :opencontract})
+(def contractInfo {:filename "dumps/otvorenezmluvy-dump.csv" :type :opencontract})
 
 (def contractNameURI (createURI (str basicNamespace "/contractname")))
 (def departmentUri (createURI (str basicNamespace "/department")))
 (def customerURI (createURI (str basicNamespace "/customer")))
 (def supplierURI (createURI (str basicNamespace "/supplier")))
 (def contractedAmountURI (createURI (str basicNamespace "/contractedAmount")))
-(def totalAmountURI (createURI (str basicNamespace "/totalamount")))
 (def publishedOnURI (createURI (str basicNamespace "/publishedon")))
 (def effectiveFromUri (createURI (str basicNamespace "/effectivefrom")))
 (def expiresOnUri (createURI (str basicNamespace "/expireson")))
@@ -25,15 +24,15 @@
 	:department departmentUri
 	:customer customerURI
 	:supplier supplierURI
-	:supplierIco supplierIcoURI
+	:supplierIco supplierIco
 	:contractedAmount contractedAmountURI
-	:totalAmount totalAmountURI
+	:totalAmount totalAmount
 	:publishedOn publishedOnURI
 	:effectiveFrom effectiveFromUri
 	:expiresOn expiresOnUri
 	:note note
 	:pageCount pageCountURI
-	:sourceUrl sourceUrlURI })
+	:sourceUrl sourceUrl })
 
 (defrecord OpenContract [contractName type department customer supplier 
 	supplierIco contractedAmount totalAmount publishedOn effectiveFrom expiresOn note pageCount sourceUrl]

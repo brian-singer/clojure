@@ -6,7 +6,6 @@
 (def eurofondDirectInfo {:filename "dumps/eurofondy_EU_komisia-dump.csv" :type :eurofondsdirect})
 
 
-(def addressURI (createURI (str basicNamespace "/addressico")))
 (def objectiveURI (createURI (str basicNamespace "/objective")))
 (def projNumberURI (createURI (str basicNamespace "/projnumber")))
 (def amountURI (createURI (str basicNamespace "/amount")))
@@ -21,7 +20,7 @@
 	(createURI (str basicNamespace "/eurofonddirect/") n))
 
 (def eurodirectMap { 
-	:receiver receiverURI
+	:receiver receiver
 	:address address
 	:city city
 	:objective objectiveURI
