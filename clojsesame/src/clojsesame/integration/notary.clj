@@ -5,25 +5,19 @@
 
 (def notaryInfo {:filename "dumps/notaries-dump.csv" :type :notary})
 
-(def notaryNamespace (str basicNamespace "/notary/"))
+(defn- notaryURI [x] 
+	(createURI (str basicNamespace "/notary/") (:name x)))
 
-(defn- notaryUuidURI [x] 
-	(createURI notaryNamespace (:name x)))
+(def notaryMap { 
+	:name fullname
+	:form profession
+	:city city})
 
-(defn- notaryName [x] 
-	(vector (notaryUuidURI x) fullName (createLiteral (:name x))))
-
-(defn- notaryProfession [x] 
-	(vector (notaryUuidURI x) profession (createLiteral (:form x))))
-
-(defn- notaryCity [x] 
-	(vector (notaryUuidURI x) city (createLiteral (:city x))))
 
 (defrecord Notary [name form street city zip]
 	SesameRepository
 	 (store [x]     	
-    	(doseq [[subj predic obj] ((juxt notaryName notaryProfession notaryCity) x)]
-    		(insertTriple subj predic obj))))
+    	(storeRecord notaryURI notaryMap x)))
 
 
 (defmethod convert :notary [x type] 

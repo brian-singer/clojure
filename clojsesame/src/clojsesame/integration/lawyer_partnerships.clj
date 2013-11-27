@@ -5,25 +5,18 @@
 
 (def lawyerPartnerInfo {:filename "dumps/lawyer_partnerships-dump.csv" :type :lawyerPartner})
 
-(def lawyerPartnerNamespace (str basicNamespace "/lawyerPartner/"))
+(defn- lawyerPartnerURI [{ n :name}] 
+	(createURI (str basicNamespace "/lawyerPartner/") n))
 
-(defn- lpUuidURI [{ n :name}] 
-	(createURI lawyerPartnerNamespace n))
-
-(defn- lpName [{ n :name :as x}] 
-	(vector (lpUuidURI x) fullName (createLiteral n)))
-
-(defn- lpCity [{ c :city :as x}] 
-	(vector (lpUuidURI x) city (createLiteral c)))
-
-(defn- lpType [{ t :type :as x}] 
-	(vector (lpUuidURI x) theType (createLiteral t)))
+(def lawyerPartnerMap { 
+	:name fullname
+	:type type
+	:city city})
 
 (defrecord LawyerPartnership [name type city]
 	SesameRepository
 	 (store [x]     	
-    	(doseq [[subj predic obj] ((juxt lpName lpCity lpType) x)]
-    		(insertTriple subj predic obj))))
+    	(storeRecord lawyerPartnerURI lawyerPartnerMap x)))
 
 (defmethod convert :lawyerPartner [x type]
 (let [[_ fullName type _ _ _ _ city] x]

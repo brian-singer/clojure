@@ -5,25 +5,18 @@
 
 (def lawyerInfo {:filename "dumps/lawyers-dump.csv" :type :lawyer})
 
-(def lawyerNamespace (str basicNamespace "/lawyer/"))
+(defn- lawyerURI [{ n :name}] 
+	(createURI (str basicNamespace "/lawyer/") n))
 
-(defn- lawyerUuidURI [{ n :name}] 
-	(createURI lawyerNamespace n))
-
-(defn- lawyerName [{ n :name :as x}] 
-	(vector (lawyerUuidURI x) fullName (createLiteral n)))
-
-(defn- lawyerProfession [{ p :profession :as x}] 
-	(vector (lawyerUuidURI x) profession (createLiteral p)))
-
-(defn- lawyerCity [{ c :city :as x}] 
-	(vector (lawyerUuidURI x) city (createLiteral c)))
+(def lawyerMap { 
+	:name fullname
+	:profession profession
+	:city city})
 
 (defrecord Lawyer [name profession city ]
 	SesameRepository
 	 (store [x]     	
-    	(doseq [[subj predic obj] ((juxt lawyerName lawyerProfession lawyerCity) x)]
-    		(insertTriple subj predic obj))))
+    	(storeRecord lawyerURI lawyerMap x)))
 
 (defn- convertName [f m l]
 	(if (> 3 (count m)) (str f " " l) (str f " " m " " l)))

@@ -21,7 +21,7 @@
 (def supplierIcoURI (createURI (str basicNamespace "/supplierico")))
 (def currencyURI (createURI (str basicNamespace "/currency")))
 (def receiverURI (createURI (str basicNamespace "/receiver")))
-
+(def address (createURI (str basicNamespace "/address")))
 
 (defn triplify [urif property->predicate x property]
 	(vector (urif x) (property property->predicate) (-> x property createLiteral)))
