@@ -22,9 +22,12 @@
 (def totalAmount (createURI (str basicNamespace "/totalamount")))
 (def currency (createURI (str basicNamespace "/currency")))
 (def ministry (createURI (str basicNamespace "/ministry")))
-(def fromDate (createURI (str basicNamespace "/fromDate")))
-(def toDate (createURI (str basicNamespace "/toDate")))
+(def fromDate (createURI (str basicNamespace "/fromdate")))
+(def toDate (createURI (str basicNamespace "/todate")))
 (def amount (createURI (str basicNamespace "/amount")))
+(def donorCompany (createURI (str basicNamespace "/donorcompany")))
+(def donorIco (createURI (str basicNamespace "/donorico")))
+(def acceptDate (createURI (str basicNamespace "/acceptdate")))
 
 (defn triplify [urif property->predicate x property]
 	(vector (urif x) (property property->predicate) (-> x property createLiteral)))
