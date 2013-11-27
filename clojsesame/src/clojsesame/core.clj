@@ -17,7 +17,8 @@
 		[clojsesame.integration.secretary :refer :all]
 		[clojsesame.integration.govmembers :refer :all]
 		[clojsesame.integration.partydonor :refer :all]
-		[clojsesame.integration.partylenders :refer :all])
+		[clojsesame.integration.partylenders :refer :all]
+		[clojsesame.integration.swisscontribution :refer :all])
 	(:gen-class))
 
 (import 'org.openrdf.query.QueryLanguage)
@@ -41,7 +42,7 @@
 (defn -main
   [& args]
   	(storeEm 
-  		(readCsvFile partylenderInfo))
+  		(readCsvFile swisscontribInfo))
   	(let [results (testQuery)]
   		(println results)))
   		
