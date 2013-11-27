@@ -8,18 +8,13 @@
 (defn- secretaryURI [x] 
 	(createURI (str basicNamespace "/secretary/") (:name x)))
 
-(def ministryURI (createURI (str basicNamespace "/ministry")))
-(def fromDateURI (createURI (str basicNamespace "/fromDate")))
-(def toDateURI (createURI (str basicNamespace "/toDate")))
-
 (def secretaryMap { 
 	:name fullname
 	:occupation occupation
-	:ministry ministryURI
-	:fromDate fromDateURI
-	:toDate toDateURI
+	:ministry ministry
+	:fromDate fromDate
+	:toDate toDate
 	:note note})
-
 
 (defrecord Secretary [name occupation ministry fromDate toDate note]
 	SesameRepository

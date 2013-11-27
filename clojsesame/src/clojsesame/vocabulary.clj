@@ -21,6 +21,9 @@
 (def address (createURI (str basicNamespace "/address")))
 (def totalAmount (createURI (str basicNamespace "/totalamount")))
 (def currency (createURI (str basicNamespace "/currency")))
+(def ministry (createURI (str basicNamespace "/ministry")))
+(def fromDate (createURI (str basicNamespace "/fromDate")))
+(def toDate (createURI (str basicNamespace "/toDate")))
 
 (defn triplify [urif property->predicate x property]
 	(vector (urif x) (property property->predicate) (-> x property createLiteral)))
