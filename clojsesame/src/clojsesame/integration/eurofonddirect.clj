@@ -8,7 +8,6 @@
 
 (def objectiveURI (createURI (str basicNamespace "/objective")))
 (def projNumberURI (createURI (str basicNamespace "/projnumber")))
-(def amountURI (createURI (str basicNamespace "/amount")))
 (def totalURI (createURI (str basicNamespace "/totalamount")))
 (def participantURI (createURI (str basicNamespace "/participant")))
 (def unameURI (createURI (str basicNamespace "/uname")))
@@ -27,7 +26,7 @@
 	:projNumber projNumberURI 
 	:year year
 	:type theType
-	:amount amountURI
+	:amount amount
 	:totalAmout totalURI
 	:currency currency
 	:participant participantURI
