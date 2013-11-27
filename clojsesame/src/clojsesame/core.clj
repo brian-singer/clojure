@@ -37,7 +37,7 @@
 (defn -main
   [& args]
   	(storeEm 
-  		(readCsvFile eurofondDirectInfo ))
+  		(readCsvFile procurementsInfo ))
   	(let [results (testQuery)]
   		(println results)))
   		

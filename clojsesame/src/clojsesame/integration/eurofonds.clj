@@ -5,8 +5,6 @@
 
 (def eurofondsInfo {:filename "dumps/eurofondy_2007_2013-dump.csv" :type :eurofonds})
 
-(def eurofondsNamespace (str basicNamespace "/eurofonds/"))
-
 (def receiverIcoURI (createURI (str basicNamespace "/receiverico")))
 (def projectNameURI (createURI (str basicNamespace "/projectname")))
 (def itmsCodeURI (createURI (str basicNamespace "/itmscode")))
@@ -20,65 +18,37 @@
 (def additionalFinancingURI (createURI (str basicNamespace "/additionalFinancing")))
 (def beginningURI (createURI (str basicNamespace "/beginning")))
 (def finishURI (createURI (str basicNamespace "/finish")))
-(def updatedAtURI (createURI (str basicNamespace "/updatedAt")))
-
+(def updatedAtURI (createURI (str basicNamespace "/updatedat")))
+(def totalAmountURI (createURI (str basicNamespace "/totalamout")))
 
 (defn- eurofondsUuidURI [{ n :name}] 
-	(createURI eurofondsNamespace n))
+	(createURI (str basicNamespace "/eurofonds/") n))
 
-(defn- rc [{ n :receiver :as x}] 
-	(vector (eurofondsUuidURI x) receiverURI (createLiteral n)))
-
-(defn- rcico [{ n :receiverIco :as x}] 
-	(vector (eurofondsUuidURI x) receiverIcoURI (createLiteral n)))
-
-(defn- prname [{ n :projectName :as x}] 
-	(vector (eurofondsUuidURI x) projectNameURI (createLiteral n)))
-
-(defn- code [{ n :itmsCode :as x}] 
-	(vector (eurofondsUuidURI x) itmsCodeURI (createLiteral n)))
-
-(defn- opProg [{ n :operationProgram :as x}] 
-	(vector (eurofondsUuidURI x) operationProgramURI (createLiteral n)))
-
-(defn- ctrlEntity [{ n :controlEntity :as x}] 
-	(vector (eurofondsUuidURI x) controlEntityURI (createLiteral n)))
-
-(defn- euprt [{ n :euPart :as x}] 
-	(vector (eurofondsUuidURI x) euPartURI (createLiteral n)))
-
-(defn- govprt [{ n :govPart :as x}] 
-	(vector (eurofondsUuidURI x) govPartURI (createLiteral n)))
-
-(defn- usedAll [{ n :usedTotal :as x}] 
-	(vector (eurofondsUuidURI x) usedTotalURI (createLiteral n)))
-
-(defn- euused [{ n :euUsed :as x}] 
-	(vector (eurofondsUuidURI x) euUsedURI (createLiteral n)))
-
-(defn- addfinance [{ n :additionalFinancing :as x}] 
-	(vector (eurofondsUuidURI x) additionalFinancingURI (createLiteral n)))
-
-(defn- ccurrency [{ n :currency :as x}] 
-	(vector (eurofondsUuidURI x) currencyURI (createLiteral n)))
-
-(defn- begin1 [{ n :beginning :as x}] 
-	(vector (eurofondsUuidURI x) beginningURI (createLiteral n)))
-
-(defn- finish1 [{ n :finish :as x}] 
-	(vector (eurofondsUuidURI x) finishURI (createLiteral n)))
-
-(defn- updatedDate [{ n :updatedAt :as x}] 
-	(vector (eurofondsUuidURI x) updatedAtURI (createLiteral n)))
-
-
+(def eurofondsMap { 
+	:receiver receiverURI
+	:receiverIco receiverIcoURI
+	:projectName projectNameURI
+	:itmsCode itmsCodeURI
+	:operationProgram operationProgramURI
+	:controlEntity controlEntityURI
+	:note noteURI
+	:totalAmout totalAmountURI
+	:euPart euPartURI
+	:govPart govPartURI
+	:usedTotal usedTotalURI
+	:euUsed euUsedURI
+	:govUsed govUsedURI
+	:additionalFinancing additionalFinancingURI
+	:currency currencyURI
+	:beginning beginningURI
+	:finish finishURI
+	:updatedAt updatedAtURI
+	})
 
 (defrecord Eurofonds [receiver receiverIco projectName itmsCode operationProgram controlEntity note totalAmout
  euPart govPart usedTotal euUsed govUsed additionalFinancing currency beginning finish updatedAt]
 	SesameRepository
-	 (store [x]     	
-    	(doseq [[subj predic obj] ((juxt rc rcico prname code opProg ctrlEntity euprt govprt usedAll euused addfinance ccurrency begin1 finish1 updatedDate) x)]
-    		(insertTriple subj predic obj))))
+	 (store [x] (storeRecord eurofondsUuidURI eurofondsMap x)))
 
 (defmethod convert :eurofonds [x type]
 (let [[_ receiver receiverIco projectName itmsCode operationProgram controlEntity note totalAmout

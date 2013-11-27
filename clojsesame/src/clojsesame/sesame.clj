@@ -36,3 +36,4 @@
 
 (defn result2vec [queryResult]
 	(-> queryResult createWrapper seq vec))
+

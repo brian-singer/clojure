@@ -22,5 +22,14 @@
 (def currencyURI (createURI (str basicNamespace "/currency")))
 (def receiverURI (createURI (str basicNamespace "/receiver")))
 
+
+(defn triplify [urif property->predicate x property]
+	(vector (urif x) (property property->predicate) (-> x property createLiteral)))
+
+(defn storeRecord [urif mapping x]
+	(let [triplify (partial triplify urif mapping x)] 
+	 		(doseq [[subj predic obj] (map triplify (keys x))]
+	 			(insertTriple subj predic obj))))
+
 (defmulti convert 
 	(fn[x type] type))
