@@ -18,7 +18,9 @@
 		[clojsesame.integration.govmembers :refer :all]
 		[clojsesame.integration.partydonor :refer :all]
 		[clojsesame.integration.partylenders :refer :all]
-		[clojsesame.integration.swisscontribution :refer :all])
+		[clojsesame.integration.swisscontribution :refer :all]
+		[clojsesame.integration.customs :refer :all]
+		[clojsesame.integration.debtovertake :refer :all])
 	(:gen-class))
 
 (import 'org.openrdf.query.QueryLanguage)
@@ -42,7 +44,7 @@
 (defn -main
   [& args]
   	(storeEm 
-  		(readCsvFile swisscontribInfo))
+  		(readCsvFile debtovertakeInfo))
   	(let [results (testQuery)]
   		(println results)))
   		

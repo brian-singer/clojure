@@ -26,6 +26,8 @@
 (def donorCompany (createURI (str basicNamespace "/donorcompany")))
 (def donorIco (createURI (str basicNamespace "/donorico")))
 (def acceptDate (createURI (str basicNamespace "/acceptdate")))
+(def companyIco (createURI (str basicNamespace "/acceptdate")))
+(def companyName (createURI (str basicNamespace "/companyname")))
 
 (defn triplify [urif property->predicate x property]
 	(vector (urif x) (property property->predicate) (-> x property createLiteral)))
