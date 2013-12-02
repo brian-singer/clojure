@@ -20,7 +20,8 @@
 		[clojsesame.integration.partylenders :refer :all]
 		[clojsesame.integration.swisscontribution :refer :all]
 		[clojsesame.integration.customs :refer :all]
-		[clojsesame.integration.debtovertake :refer :all])
+		[clojsesame.integration.debtovertake :refer :all]
+		[clojsesame.integration.twopercent :refer :all])
 	(:gen-class))
 
 (import 'org.openrdf.query.QueryLanguage)
@@ -44,7 +45,7 @@
 (defn -main
   [& args]
   	(storeEm 
-  		(readCsvFile debtovertakeInfo))
+  		(readCsvFile twopercentInfo))
   	(let [results (testQuery)]
   		(println results)))
   		
