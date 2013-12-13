@@ -5,6 +5,7 @@
 	<meta charset="utf-8">
 	<title>2% z Dani</title>
 	<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 	<script type="text/javascript" src="dve_percenta2012.js"></script>
 	<script type="text/javascript" src="dve_percenta2011.js"></script>
 	<script type="text/javascript" src="dve_percenta2010.js"></script>
@@ -23,12 +24,19 @@
 		color: #FFF;
 	}
 
-	div:hover
+	.maptile:hover
 	{
 		background-color:black !important;
 		border:solid !important;
 		border-color:yellow !important;
 		z-index: 2; 
+	}
+	
+	#mainmap
+	{
+	position:absolute;
+	top:50px;
+	left:5px;
 	}
 
 	
@@ -37,7 +45,27 @@
 
 </head>
 <body>
+
+<select>
+  <option value="2012">2012</option>
+  <option value="2011">2011</option>
+  <option value="2010">2010</option>
+  <option value="2009">2009</option>
+</select> 
+
+<div id="mainmap"></div>
+
 	<script type="text/javascript">
+
+	dataset2 = { 
+		"name": "", "value" : 11,
+		"children": [ 
+		{ "name": "data1", "value": 38 },
+		{ "name": "data2", "value": 111 },
+		{ "name": "data3", "value": 11 },
+		{ "name": "data4", "value": 38 }
+		]
+	}
 
 		var hideTooltip = function() {
 			$('div.tooltip').remove();
@@ -51,24 +79,16 @@
 			$('div.tooltip').css({top: d.y + d.dy / 2, left: d.x + d.dx / 2.5});
 		};
 
-	// dataset2 = { 
-	// 	"name": "", "value" : 11,
-	// 	"children": [ 
-	// 	{ "name": "data1", "value": 38 },
-	// 	{ "name": "data2", "value": 111 },
-	// 	{ "name": "data3", "value": 11 },
-	// 	{ "name": "data4", "value": 38 }
-	// 	]
-	// }
+
 
 		var width = 1024;
 		var height = 768;
 	
 		var color = d3.scale.category20();
 
-		var treemap = d3.layout.treemap().size([width,height]).nodes(dataset);
+		var treemap = d3.layout.treemap().size([width,height]).nodes(dataset2);
 
-		var cells = d3.select("body").selectAll("body")
+		var cells = d3.select("div").selectAll("div")
 		.data(treemap)
 		.enter()
 		.append("div")
@@ -77,6 +97,7 @@
 		.style("top", function (d) {return d.y + "px" ;})
 		.style("width", function (d) {return d.dx + "px";})
 		.style("height", function (d) {return d.dy + "px";})
+		.attr('class','maptile')
 		.style("background", function (d) {return color(d.name);})
  		.on("mouseover", showTooltip)
  		.on("mouseout", hideTooltip);
