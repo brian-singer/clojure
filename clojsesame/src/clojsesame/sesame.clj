@@ -2,11 +2,16 @@
 
 (import 'org.openrdf.sail.memory.MemoryStore
 	'org.openrdf.repository.sail.SailRepository
+	'org.openrdf.repository.http.HTTPRepository
 	'org.openrdf.model.vocabulary.RDF 
 	'org.openrdf.model.Resource
 	'org.openrdf.query.QueryLanguage)
 
-(def repository (-> (MemoryStore.) SailRepository. ))
+; (def repository (-> (MemoryStore.) SailRepository. ))
+; (def valueFactory  (.getValueFactory repository ))
+; (def _ (-> repository .initialize))
+
+(def repository (HTTPRepository. "http://localhost:8080/openrdf-sesame/" "datasetX"))
 (def valueFactory  (.getValueFactory repository ))
 (def _ (-> repository .initialize))
 
