@@ -1,6 +1,6 @@
 # zugradar
 
-A small AngularJS/Clojure application for displaying up-to-date train information from [zugradar.oebb.at](http://zugradar.oebb.at/).  
+An AngularJS/Clojure quick-prototype application for displaying up-to-date train information from [zugradar.oebb.at](http://zugradar.oebb.at/).  
 
 ## Usage
 
